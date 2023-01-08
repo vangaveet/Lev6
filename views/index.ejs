@@ -2,17 +2,57 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vineeth Todo Manager</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/js/script.js" type="text/javascript"></script>
+    <title>TO-DO Manager</title>
   </head>
   <body>
-    <!-- <h1>Todo Manager</h1> -->
-    <!-- for reuse the created common ejs file like header and footer  -->
-    <%- include("header.ejs") %>
-    <br />
-    <%- include("todos.ejs") %> <%- include("footer.ejs") %>
+    <!-- ender the contents of header.js -->
+
+    <div class="grid grid-cols-6">
+      <div class="col-start-3 col-span-2">
+        <header><%- include('header.ejs') %></header>
+        <form>
+          <div class="flex gap-2 py-4">
+            <div class="flex-auto">
+              <input
+                type="text"
+                placeholder="What's next?"
+                class="border border-gray-300 w-full rounded p-2 text-sm"
+                required
+              />
+            </div>
+            <div class="flex-auto">
+              <input
+                type="date"
+                required
+                class="border border-gray-300 w-full rounded p-2 text-sm leading-4"
+              />
+            </div>
+            <div class="flex-none">
+              <button
+                type="submit"
+                class="bg-green-600 text-white px-5 py-2 rounded font-medium mr-2 mb-2 py-1.5"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </form>
+        <br />
+
+        <!-- render contents of todo.ejs -->
+        <div>
+          <h5>Overdue</h5>
+          <%- include("todos.ejs") %>
+          <h5>Due Today</h5>
+          <h5>Due Later</h5>
+        </div>
+      </div>
+    </div>
+    <!-- render the contents of footer.ejs  -->
+    <!-- <footer><%- include("footer.ejs") %></footer> -->
   </body>
 </html>
